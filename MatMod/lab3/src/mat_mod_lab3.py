@@ -147,7 +147,7 @@ def main():
     m = 0
     s_2 = 1
     normal_distribution_rv = modeling_normal_distribution(m, s_2, n)
-    with open("normal_distribution_rc.txt", "w", encoding='utf-8') as file:
+    with open("../bin/normal_distribution_rc.txt", "w", encoding='utf-8') as file:
         for rv in normal_distribution_rv:
             print(rv, file=file)
     print('Нормальное распределение:\n\tМатематическое ожидание: {}\t-\t{}'
@@ -162,12 +162,12 @@ def main():
             res_kolmogorov += 1
         if not pearson(modeling_normal_distribution(m, s_2, n, primes[i], primes[i]), scipy.stats.norm(m, s_2).cdf):
             res_pearson += 1
-    print('\tВероятность ошибки первого рода(Колмогоров): {}'.format(res_kolmogorov))
-    print('\tВероятность ошибки первого рода(Пирсон): {}\n'.format(res_pearson))
+    print('\tВероятность ошибки первого рода(Колмогоров): {}%'.format(res_kolmogorov))
+    print('\tВероятность ошибки первого рода(Пирсон): {}%\n'.format(res_pearson))
 
     a = 0.5
     laplace_distribution_rv = modeling_laplace_distribution(a, n)
-    with open("laplace_distribution_rc.txt", "w", encoding='utf-8') as file:
+    with open("../bin/laplace_distribution_rc.txt", "w", encoding='utf-8') as file:
         for rv in laplace_distribution_rv:
             print(rv, file=file)
     print('Распределение Лапласа:\n\tМатематическое ожидание: {}\t-\t{}'
@@ -182,13 +182,13 @@ def main():
             res_kolmogorov += 1
         if not pearson(modeling_laplace_distribution(a, n, primes[i], primes[i]), laplace_distribution):
             res_pearson += 1
-    print('\tВероятность ошибки первого рода(Колмогоров): {}'.format(res_kolmogorov))
-    print('\tВероятность ошибки первого рода(Пирсон): {}\n'.format(res_pearson))
+    print('\tВероятность ошибки первого рода(Колмогоров): {}%'.format(res_kolmogorov))
+    print('\tВероятность ошибки первого рода(Пирсон): {}%\n'.format(res_pearson))
 
     a = 1
     b = 0.5
     weibull_distribution_rv = modeling_weibull_distribution(a, b, n)
-    with open("weibull_distribution_rc.txt", "w", encoding='utf-8') as file:
+    with open("../bin/weibull_distribution_rc.txt", "w", encoding='utf-8') as file:
         for rv in weibull_distribution_rv:
             print(rv, file=file)
     print('Распределение Вейбулла:\n\tМатематическое ожидание: {}\t-\t{}'
@@ -204,13 +204,13 @@ def main():
             res_kolmogorov += 1
         if not pearson(modeling_weibull_distribution(a, b, n, primes[i], primes[i]), weibull_distribution):
             res_pearson += 1
-    print('\tВероятность ошибки первого рода(Колмогоров): {}'.format(res_kolmogorov))
-    print('\tВероятность ошибки первого рода(Пирсон): {}\n'.format(res_pearson))
+    print('\tВероятность ошибки первого рода(Колмогоров): {}%'.format(res_kolmogorov))
+    print('\tВероятность ошибки первого рода(Пирсон): {}%\n'.format(res_pearson))
 
     a = -1
     b = 1
     cauchy_distribution_rv = modeling_cauchy_distribution(a, b, n)
-    with open("cauchy_distribution_rc.txt", "w", encoding='utf-8') as file:
+    with open("../bin/cauchy_distribution_rc.txt", "w", encoding='utf-8') as file:
         for rv in cauchy_distribution_rv:
             print(rv, file=file)
     print('Распределение Коши:\n\tМатематическое ожидание: {}\t-\t{}'
@@ -225,13 +225,13 @@ def main():
             res_kolmogorov += 1
         if not pearson(modeling_cauchy_distribution(a, b, n, primes[i], primes[i]), cauchy_distribution):
             res_pearson += 1
-    print('\tВероятность ошибки первого рода(Колмогоров): {}'.format(res_kolmogorov))
-    print('\tВероятность ошибки первого рода(Пирсон): {}\n'.format(res_pearson))
+    print('\tВероятность ошибки первого рода(Колмогоров): {}%'.format(res_kolmogorov))
+    print('\tВероятность ошибки первого рода(Пирсон): {}%\n'.format(res_pearson))
 
     a = 2
     b = 3
     logistic_distribution_rv = modeling_logistic_distribution(a, b, n)
-    with open("logistic_distribution_rc.txt", "w", encoding='utf-8') as file:
+    with open("../bin/logistic_distribution_rc.txt", "w", encoding='utf-8') as file:
         for rv in logistic_distribution_rv:
             print(rv, file=file)
     print('Логистическое распределение:\n\tМатематическое ожидание: {}\t-\t{}'
@@ -246,8 +246,8 @@ def main():
             res_kolmogorov += 1
         if not pearson(modeling_logistic_distribution(a, b, n, primes[i], primes[i]), logistic_distribution):
             res_pearson += 1
-    print('\tВероятность ошибки первого рода(Колмогоров): {}'.format(res_kolmogorov))
-    print('\tВероятность ошибки первого рода(Пирсон): {}\n'.format(res_pearson))
+    print('\tВероятность ошибки первого рода(Колмогоров): {}%'.format(res_kolmogorov))
+    print('\tВероятность ошибки первого рода(Пирсон): {}%\n'.format(res_pearson))
 
 
 if __name__ == '__main__':

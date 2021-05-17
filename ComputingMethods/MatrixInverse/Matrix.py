@@ -88,7 +88,8 @@ class CustomMatrix:
         l = -self.__matrix[row][base_line_index] / self.__matrix[base_line_index][base_line_index]
         for col in range(base_line_index, len(self.__matrix)):
             self.__matrix[row][col] += l * self.__matrix[base_line_index][col]
-            if identity_matrix is not None:
+        if identity_matrix is not None:
+            for col in range(len(self.__matrix)):
                 identity_matrix[row][col] += l * identity_matrix[base_line_index][col]
         if vector is not None:
             vector[row] += l * vector[base_line_index]
@@ -96,5 +97,5 @@ class CustomMatrix:
     def __str__(self):
         lines = ''
         for line in self.__matrix:
-            lines += str([round(x, 2) for x in line]) + "\n"
+            lines += str([round(x, 10) for x in line]) + "\n"
         return lines

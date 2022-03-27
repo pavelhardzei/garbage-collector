@@ -5,6 +5,7 @@ import re
 import sys
 
 from collections import namedtuple
+from stat import S_ISREG
 
 
 def get_owner(path):
@@ -33,14 +34,15 @@ def main():
     users_files = {}
 
     for item in os.listdir(sys.argv[1]):
-        if os.path.isdir(os.path.join(sys.argv[1], item)) or not check_elf(os.path.join(sys.argv[1], item)):
+        path = os.path.join(sys.argv[1], item)
+        if os.path.isdir(path) or not (check_elf(path) and S_ISREG(os.stat(path).st_mode)):
             continue
         
         owner = get_owner(os.path.join(sys.argv[1], item))
         if pattern is None or pattern.search(owner) is None:
             users_files.setdefault(owner, []).append(item)
     
-    users_files = {k: v for k, v in reversed(sorted(users_files.items(), key=lambda x: len(x[1])))}
+    users_files = {k: v for k, v in sorted(users_files.items(), key=lambda x: -len(x[1]))}
     users_files = {k: Info(v, sum(get_size(os.path.join(sys.argv[1], path)) for path in v))._asdict() 
                                                                             for k, v in users_files.items()}
     print(json.dumps(users_files, indent=4))

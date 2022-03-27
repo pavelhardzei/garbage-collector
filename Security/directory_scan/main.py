@@ -5,7 +5,6 @@ import re
 import sys
 
 from collections import namedtuple
-from stat import S_ISREG
 
 
 def get_owner(path):
@@ -35,7 +34,7 @@ def main():
 
     for item in os.listdir(sys.argv[1]):
         path = os.path.join(sys.argv[1], item)
-        if os.path.isdir(path) or not (check_elf(path) and S_ISREG(os.stat(path).st_mode)):
+        if os.path.isdir(path) or not check_elf(path) or os.path.islink(path):
             continue
         
         owner = get_owner(os.path.join(sys.argv[1], item))
